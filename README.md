@@ -21,8 +21,7 @@
   <a href="#-features">Features</a> •
   <a href="#-installation">Installation</a> •
   <a href="#-quick-start">Quick Start</a> •
-  <a href="#-documentation">API Docs</a> •
-  <a href="#-workflows">Workflows</a>
+
 </p>
 
 </div>
