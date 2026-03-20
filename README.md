@@ -1,4 +1,3 @@
-"center">
 
 # 🪟 WinUI Framework
 **The Ultimate UI Windows Fluent Design Experience for Roblox**
@@ -49,6 +48,10 @@ local WinUI = loadstring(game:HttpGet("https://raw.githubusercontent.com"))()
 We use GitHub Actions to maintain code quality:
 1. Release Workflow: Automatically compiles and uploads .rbxm to GitHub Releases on tag push.
 2. Linting: Runs selene to ensure clean, error-free Luau code.
+
+### Quick Start✅
+To connection your gui to WinUI to code require
+and connect script to use script in the panel and scripts this, usually enjoy to UI scratch for player.This is a end
 
 
 
