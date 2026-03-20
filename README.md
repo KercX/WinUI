@@ -4,14 +4,12 @@
 **The Ultimate Windows 11 Fluent Design Experience for Roblox**
 
 <!-- ROW OF BADGES -->
-[![Stars](https://img.shields.io)](https://github.com)
-[![Release](https://img.shields.io)](https://github.com)
-[![Build Status](https://img.shields.io)](https://github.com)
-[![Luau](https://img.shields.io)](https://luau-lang.org)
-[![License](https://img.shields.io)](https://opensource.org)
-[![Config](https://img.shields.io)](https://github.com)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](#)
+[![Lua](https://img.shields.io/badge/Lua-%232C2D72.svg?logo=lua&logoColor=white)](#) | `[![Lua](https://img.shields.io/badge/Lua-%232C2D72.svg?logo=lua&logoColor=white)](#)
+[![Github Copilot](https://img.shields.io/badge/GitHub%20Copilot-000?logo=githubcopilot&logoColor=fff)](#)]
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](#)
 [![Repo](https://img.shields.io/badge/github-repo-blue?logo=github)
-<br>
+<bv>
 
 <!-- BIG PREVIEW IMAGE -->
 <img src="https://raw.githubusercontent.com" alt="WinUI Preview" width="800">
@@ -46,9 +44,10 @@
 ### The Modern Way (Loadstring)
 ```lua
 local WinUI = loadstring(game:HttpGet("https://raw.githubusercontent.com"))()
-```
 ### 🤖 Workflows & Automation
 We use GitHub Actions to maintain code quality:
 1. Release Workflow: Automatically compiles and uploads .rbxm to GitHub Releases on tag push.
 2. Linting: Runs selene to ensure clean, error-free Luau code.
+
+
 
