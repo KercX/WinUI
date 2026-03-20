@@ -1,0 +1,29 @@
+name: WinUI Professional Release
+
+on:
+  push:
+    tags:
+      - 'v*' #
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Create Release Package
+        run: |
+          zip -r WinUI-Source.zip src/ docs/ config.json
+
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            WinUI-Source.zip
+            dist/WinUI.rbxm
+          body: "New WinUI Release. See CHANGELOG for details."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
