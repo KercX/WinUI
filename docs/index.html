@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinUI | Documentation</title>
+    <style>
+        /* CSS: Windows 11 Fluent Design */
+        :root {
+            --bg: #1c1c1c;
+            --sidebar: #252525;
+            --accent: #0078D4;
+            --text: #ffffff;
+            --text-dim: #b0b0b0;
+            --code-bg: #2d2d2d;
+            --hover: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+
+        .logo {
+            padding: 0 25px 20px;
+            font-size: 22px;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .logo span { color: var(--accent); font-size: 14px; margin-left: 5px; }
+
+        .search-box {
+            padding: 0 15px 15px;
+        }
+
+        input {
+            width: 100%;
+            background: #111;
+            border: 1px solid #444;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #menu {
+            list-style: none;
+            padding: 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        #menu li {
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        #menu li:hover {
+            background: var(--hover);
+            color: var(--text);
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Content Styles */
+        .content {
+            flex-grow: 1;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        h1 { font-size: 32px; margin-top: 0; }
+        p { line-height: 1.6; color: var(--text-dim); }
+
+        .code-block {
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+            margin: 20px 0;
+            font-family: 'Consolas', monospace;
+            border: 1px solid #444;
+        }
+
+        .code-block pre { margin: 0; color: #9cdcf0; overflow-x: auto; }
+        
+        .badge {
+            background: var(--accent);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="logo">🪟 WinUI <span>v1.5.0</span></div>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search methods..." onkeyup="filterMenu()">
+        </div>
+        <ul id="menu">
+            <!-- JS will inject items here -->
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div id="doc-view">
+            <h1>Welcome to WinUI</h1>
+            <p>The most advanced Windows 11 UI Library for Roblox. Select a method from the sidebar to get started.</p>
+            
+            <div class="code-block">
+                <pre>-- Quick Boot
+local WinUI = loadstring(game:HttpGet("https://raw.githubusercontent.com"))()</pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // JS: Logic & Data Fetching
+        let apiData = [];
+
+        async function init() {
+            try {
+                // Fetch data from your local api.json
+                const response = await fetch('api.json');
+                const data = await response.json();
+                apiData = data.methods;
+                renderMenu(apiData);
+            } catch (e) {
+                console.error("Could not load api.json. Make sure it's in the same folder!", e);
+            }
+        }
+
+        function renderMenu(items) {
+            const menu = document.getElementById('menu');
+            menu.innerHTML = "";
+            items.forEach((item, index) => {
+                let li = document.createElement('li');
+                li.textContent = item.name;
+                li.onclick = () => showDoc(item);
+                menu.appendChild(li);
+            });
+        }
+
+        function showDoc(item) {
+            const view = document.getElementById('doc-view');
+            view.innerHTML = `
+                <span class="badge">Method</span>
+                <h1>${item.name}</h1>
+                <p>${item.desc}</p>
+                <hr style="border: 0; border-top: 1px solid #333; margin: 30px 0;">
+                <h3>Usage Example:</h3>
+                <div class="code-block">
+                    <pre>${item.example}</pre>
+                </div>
+            `;
+        }
+
+        function filterMenu() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const filtered = apiData.filter(item => item.name.toLowerCase().includes(query));
+            renderMenu(filtered);
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
