@@ -1,8 +1,42 @@
 {
+  "project": "WinUI Framework",
+  "version": "1.5.0",
+  "last_updated": "2023-10-27",
   "methods": [
-    { "name": "new", "params": "config", "desc": "Creates a new Win11 window" },
-    { "name": "Button", "params": "title, callback", "desc": "Adds a button with ripple effect" },
-    { "name": "Toggle", "params": "title, default, callback", "desc": "Adds a switch toggle" },
-    { "name": "Slider", "params": "title, min, max, default, callback", "desc": "Adds a smooth dragging slider" }
+    {
+      "name": "WinUI.new",
+      "desc": "Initializes the main application window with Windows 11 Fluent design. Supports dragging and custom themes.",
+      "example": "local Window = WinUI.new({\n    Title = \"My Dashboard\",\n    Size = UDim2.new(0, 580, 0, 420)\n})"
+    },
+    {
+      "name": "Window:CreateTab",
+      "desc": "Adds a new navigation category to the left sidebar. Supports Fluent icons via Asset IDs.",
+      "example": "local MainTab = Window:CreateTab(\"General\", \"rbxassetid://10723346958\")"
+    },
+    {
+      "name": "Tab:Button",
+      "desc": "Creates a professional button with a modern ripple effect and hover animations.",
+      "example": "Tab:Button({\n    Title = \"Execute Script\",\n    Desc = \"Runs the main logic\",\n    Callback = function()\n        print(\"Clicked!\")\n    end\n})"
+    },
+    {
+      "name": "Tab:Toggle",
+      "desc": "Adds a smooth switch for boolean settings (on/off). Returns the new state to the callback.",
+      "example": "Tab:Toggle({\n    Title = \"Auto-Farm\",\n    Default = false,\n    Callback = function(state)\n        print(\"Status: \", state)\n    end\n})"
+    },
+    {
+      "name": "Tab:Slider",
+      "desc": "Adds a draggable slider to control numeric values like WalkSpeed or JumpPower.",
+      "example": "Tab:Slider({\n    Title = \"WalkSpeed\",\n    Min = 16,\n    Max = 150,\n    Default = 16,\n    Callback = function(value)\n        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value\n    end\n})"
+    },
+    {
+      "name": "Window:Notify",
+      "desc": "Sends a modern Windows 11 style toast notification to the user.",
+      "example": "Window:Notify(\"System\", \"Script loaded successfully!\")"
+    },
+    {
+      "name": "Window:SetTheme",
+      "desc": "Dynamically switches between 'Dark', 'Light', and 'Acrylic' themes.",
+      "example": "Window:SetTheme(\"Acrylic\")"
+    }
   ]
 }
