@@ -1,0 +1,8 @@
+{
+  "methods": [
+    { "name": "new", "params": "config", "desc": "Creates a new Win11 window" },
+    { "name": "Button", "params": "title, callback", "desc": "Adds a button with ripple effect" },
+    { "name": "Toggle", "params": "title, default, callback", "desc": "Adds a switch toggle" },
+    { "name": "Slider", "params": "title, min, max, default, callback", "desc": "Adds a smooth dragging slider" }
+  ]
+}
